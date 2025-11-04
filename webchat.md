@@ -124,17 +124,16 @@ class BookFast():
         msg['Subject'] = 'BookFast FAQ notification'
         msg['From'] = me
         msg['To'] = you
-        # pwd = os.environ.get("GMAIL_APP_PASSWORD")
-        pwd = os.environ.get("OUTLOOK_APP_PASSWORD")
+        pwd = os.environ.get("GMAIL_APP_PASSWORD")
+        # pwd = os.environ.get("OUTLOOK_APP_PASSWORD")
 
         # 建立 SMTP 連線
-        # with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
-        with smtplib.SMTP(host="smtp-mail.outlook.com", port=587) as smtp:
+        with smtplib.SMTP(host="smtp.gmail.com", port=587) as smtp:
+        # with smtplib.SMTP(host="smtp-mail.outlook.com", port=587) as smtp:
             try:
                 smtp.ehlo()  # 驗證 SMTP 伺服器
                 smtp.starttls()  # 建立加密傳輸
-                # smtp.login("uicdennis@gmail.com", pwd)  # 登入寄件者 Gmail
-                smtp.login("uic_dennis@outlook.com", pwd)  # 登入寄件者 Gmail
+                smtp.login("dennisliao66@gmail.com", pwd)  # 登入寄件者 Gmail
                 smtp.sendmail(me, [you], msg.as_string())  # 寄送郵件
                 print("Complete!")
             except Exception as e:
